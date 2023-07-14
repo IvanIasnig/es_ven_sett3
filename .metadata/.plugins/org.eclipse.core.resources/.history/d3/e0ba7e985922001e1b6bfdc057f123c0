@@ -6,7 +6,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
-import Application.Elemento;
 import Application.Utente;
 
 public class UtenteDAO {
@@ -26,8 +25,9 @@ public class UtenteDAO {
     }
 
     public Utente trovaPerIsbn(UUID isbn) {
-        Utente found = em.find(Utente.class, isbn);
-        return found;
+        TypedQuery<Utente> query = em.createQuery("SELECT e FROM Utente e WHERE e.isbn = :isbn", Utente.class);
+        query.setParameter("isbn", isbn);
+        return query.getSingleResult();
     }
     
     public void rimuoviUtente(UUID isbn) {
