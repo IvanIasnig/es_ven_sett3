@@ -28,7 +28,7 @@ public class ElementoDAO {
     }
 
     public Elemento trovaPerIsbn(UUID isbn) {
-        Elemento found = em.find(Elemento.class, isbn);
+        Elemento found = em.find(Elemento.class, id);
         return found;
     }
     
