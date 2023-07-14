@@ -1,0 +1,27 @@
+package DAO;
+
+import java.util.List;
+import java.util.UUID;
+
+import Application.Utente;
+
+public class UtenteDAO {
+
+    public void aggiungiUtente(Utente utente) {
+        // codice per aggiungere un utente al database
+    }
+
+    public void rimuoviUtente(UUID id) {
+        // codice per rimuovere un utente dal database
+    }
+
+    public Utente trovaPerId(UUID id) {
+        // codice per trovare un utente per id
+    }
+
+    public List<Utente> trovaPerNomeECognome(String nome, String cognome) {
+        // codice per trovare utenti per nome e cognome
+    }
+}
+
+

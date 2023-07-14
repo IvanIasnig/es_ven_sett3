@@ -397,3 +397,41 @@ user global configuration and to define the default location to store repositori
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.jpt.jpa.core 4 0 2023-07-14 12:06:18.985
+!MESSAGE Cannot invoke "String.equals(Object)" because the return value of "org.eclipse.jpt.common.core.utility.jdt.TypeBinding.getQualifiedName()" is null
+!STACK 0
+java.lang.NullPointerException: Cannot invoke "String.equals(Object)" because the return value of "org.eclipse.jpt.common.core.utility.jdt.TypeBinding.getQualifiedName()" is null
+	at org.eclipse.jpt.jpa.core.internal.AbstractJpaProject.getJavaResourceType(AbstractJpaProject.java:899)
+	at org.eclipse.jpt.jpa.core.internal.AbstractJpaProject.getJavaResourceType(AbstractJpaProject.java:908)
+	at org.eclipse.jpt.jpa.core.internal.context.java.AbstractJavaIdTypeMapping.findResourceType(AbstractJavaIdTypeMapping.java:118)
+	at org.eclipse.jpt.jpa.core.internal.context.java.AbstractJavaIdTypeMapping.findSuperTypeMapping(AbstractJavaIdTypeMapping.java:113)
+	at org.eclipse.jpt.jpa.core.internal.context.java.AbstractJavaIdTypeMapping.findSuperTypeMapping(AbstractJavaIdTypeMapping.java:98)
+	at org.eclipse.jpt.jpa.core.internal.context.java.AbstractJavaIdTypeMapping.update(AbstractJavaIdTypeMapping.java:55)
+	at org.eclipse.jpt.jpa.core.internal.context.java.AbstractJavaEntity.update(AbstractJavaEntity.java:192)
+	at org.eclipse.jpt.jpa.core.internal.jpa1.context.java.GenericJavaEntity.update(GenericJavaEntity.java:44)
+	at org.eclipse.jpt.jpa.core.internal.context.java.AbstractJavaPersistentType.update(AbstractJavaPersistentType.java:101)
+	at org.eclipse.jpt.jpa.core.internal.jpa1.context.persistence.GenericClassRef.updateJavaManagedType(GenericClassRef.java:194)
+	at org.eclipse.jpt.jpa.core.internal.jpa1.context.persistence.GenericClassRef.update(GenericClassRef.java:125)
+	at org.eclipse.jpt.jpa.core.internal.context.AbstractJpaContextModel$ContextContainer.sync(AbstractJpaContextModel.java:512)
+	at org.eclipse.jpt.jpa.core.internal.context.AbstractJpaContextModel$ContextContainer.update(AbstractJpaContextModel.java:460)
+	at org.eclipse.jpt.jpa.core.internal.context.persistence.AbstractPersistenceUnit.updateImpliedClassRefs(AbstractPersistenceUnit.java:897)
+	at org.eclipse.jpt.jpa.core.internal.context.persistence.AbstractPersistenceUnit.update(AbstractPersistenceUnit.java:300)
+	at org.eclipse.jpt.jpa.core.internal.context.AbstractJpaContextModel.updateModels(AbstractJpaContextModel.java:79)
+	at org.eclipse.jpt.jpa.core.internal.jpa1.context.persistence.GenericPersistence.update(GenericPersistence.java:75)
+	at org.eclipse.jpt.jpa.core.internal.jpa1.context.persistence.GenericPersistenceXml.syncPersistence(GenericPersistenceXml.java:137)
+	at org.eclipse.jpt.jpa.core.internal.jpa1.context.persistence.GenericPersistenceXml.updatePersistence(GenericPersistenceXml.java:97)
+	at org.eclipse.jpt.jpa.core.internal.jpa1.context.persistence.GenericPersistenceXml.update(GenericPersistenceXml.java:93)
+	at org.eclipse.jpt.jpa.core.internal.jpa1.context.GenericContextRoot.syncPersistenceXml(GenericContextRoot.java:125)
+	at org.eclipse.jpt.jpa.core.internal.jpa1.context.GenericContextRoot.updatePersistenceXml(GenericContextRoot.java:159)
+	at org.eclipse.jpt.jpa.core.internal.jpa1.context.GenericContextRoot.update(GenericContextRoot.java:78)
+	at org.eclipse.jpt.jpa.core.internal.AbstractJpaProject.update(AbstractJpaProject.java:2012)
+	at org.eclipse.jpt.jpa.core.internal.AbstractJpaProject$UpdateJobCommand.execute(AbstractJpaProject.java:1996)
+	at org.eclipse.jpt.common.core.internal.utility.command.RepeatingJobCommandWrapper.executeCommand(RepeatingJobCommandWrapper.java:211)
+	at org.eclipse.jpt.common.core.internal.utility.command.NotifyingRepeatingJobCommandWrapper.executeCommand(NotifyingRepeatingJobCommandWrapper.java:69)
+	at org.eclipse.jpt.common.core.internal.utility.command.RepeatingJobCommandWrapper.execute_(RepeatingJobCommandWrapper.java:198)
+	at org.eclipse.jpt.common.core.internal.utility.command.RepeatingJobCommandWrapper$StartJobCommand.execute(RepeatingJobCommandWrapper.java:172)
+	at org.eclipse.jpt.jpa.core.internal.InternalJpaProjectManager.execute_(InternalJpaProjectManager.java:1202)
+	at org.eclipse.jpt.jpa.core.internal.InternalJpaProjectManager$ClientJobCommandWrapper.execute(InternalJpaProjectManager.java:1182)
+	at org.eclipse.jpt.common.core.internal.utility.command.JobCommandJob.run(JobCommandJob.java:42)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)

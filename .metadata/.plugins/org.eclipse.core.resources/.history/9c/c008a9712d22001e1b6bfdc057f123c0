@@ -1,0 +1,12 @@
+package Application;
+
+import javax.persistence.Entity;
+
+@Entity
+public class Libro extends Elemento {
+
+    private String autore;
+    private String genere;
+
+
+}

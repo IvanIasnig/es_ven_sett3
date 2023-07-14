@@ -1,0 +1,22 @@
+package DAO;
+
+import javax.persistence.EntityManager;
+
+import Application.Utente;
+
+public class UtenteDAO {
+    
+    private final EntityManager em;
+    
+    public ElementoDAO(EntityManager em) {
+    	this.em = em;
+    }
+
+    public Utente trovaPerNumeroTessera(UUID tessera) {
+        TypedQuery<Utente> query = em.createQuery("SELECT u FROM Utente u WHERE u.numeroTessera = :tessera", Utente.class);
+        query.setParameter("tessera", tessera);
+        return query.getSingleResult();
+    }
+}
+
+

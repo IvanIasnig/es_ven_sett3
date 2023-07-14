@@ -1,0 +1,21 @@
+package Application;
+
+import javax.persistence.Entity;
+
+@Entity
+public class Libro extends Elemento {
+
+    private String autore;
+    private String genere;
+    
+	public Libro() {
+		super();
+	}
+	public Libro(String isbn, String titolo, int annoPubblicazione, int numeroPagine) {
+		super(isbn, titolo, annoPubblicazione, numeroPagine);
+ this.libro = libro;
+ this.genere = genere;
+	}
+
+
+}

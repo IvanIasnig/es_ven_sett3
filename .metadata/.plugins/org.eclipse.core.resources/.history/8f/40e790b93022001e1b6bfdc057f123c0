@@ -1,0 +1,30 @@
+package Application;
+
+import java.time.LocalDate;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
+public class Utente {
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    @Column(name = "nome")
+    private String nome;
+
+    @Column(name = "cognome")
+    private String cognome;
+
+    @Column(name = "data_di_nascita")
+    private LocalDate dataDiNascita;
+
+    @Column(name = "numero_di_tessera")
+    private String numeroDiTessera;
+
+    // getters and setters...
+}
+

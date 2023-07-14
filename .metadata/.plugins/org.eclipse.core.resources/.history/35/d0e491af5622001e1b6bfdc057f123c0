@@ -1,0 +1,63 @@
+package DAO;
+
+import java.util.List;
+import java.util.UUID;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
+
+import Application.Elemento;
+import Application.Libro;
+
+public class ElementoDAO {
+    
+    
+    private final EntityManager em;
+    
+    public ElementoDAO(EntityManager em) {
+    	this.em = em;
+    }
+
+    public void aggiungiElemento(Elemento elemento) {
+    	EntityTransaction t = em.getTransaction();
+    	t.begin();
+        em.persist(elemento);
+        t.commit();
+        System.out.println("Elemento salvato correttamente");
+    }
+
+    public Elemento trovaPerIsbn(UUID isbn) {
+        TypedQuery<Elemento> query = em.createQuery("SELECT e FROM Elemento e WHERE e.isbn = :isbn", Elemento.class);
+        query.setParameter("isbn", isbn);
+        return query.getSingleResult();
+    }
+    
+    public void rimuoviElemento(UUID isbn) {
+        Elemento elemento = trovaPerIsbn(isbn); //ho applicato il metodo sopra anzichè riscrivelo
+        if (elemento != null) {
+            em.remove(elemento);
+            System.out.println("Elemento rimosso correttamente");
+        } else {
+        	System.out.println("Elemento non trovato");
+        }
+    }
+
+    public List<Elemento> trovaPerAnnoPubblicazione(int anno) {
+        TypedQuery<Elemento> query = em.createQuery("SELECT e FROM Elemento e WHERE e.annoPubblicazione = :anno", Elemento.class);
+        query.setParameter("anno", anno);
+        return query.getResultList();
+    }
+
+    public List<Libro> trovaPerAutore(String autore) {
+        TypedQuery<Libro> query = em.createQuery("SELECT l FROM Libro l WHERE l.autore = :autore", Libro.class);
+        query.setParameter("autore", autore);
+        return query.getResultList();
+    }
+
+    public List<Elemento> trovaPerTitolo(String titolo) {
+        TypedQuery<Elemento> query = em.createQuery("SELECT e FROM Elemento e WHERE e.titolo LIKE :titolo", Elemento.class);
+        query.setParameter("titolo", "%" + titolo + "%");
+        return query.getResultList();
+    }
+}

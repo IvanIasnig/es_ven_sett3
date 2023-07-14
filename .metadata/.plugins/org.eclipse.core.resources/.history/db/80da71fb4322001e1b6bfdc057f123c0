@@ -1,0 +1,53 @@
+package DAO;
+
+import java.util.UUID;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
+
+import Application.Elemento;
+import Application.Utente;
+
+public class UtenteDAO {
+    
+    private final EntityManager em;
+    
+    public UtenteDAO(EntityManager em) {
+    	this.em = em;
+    }
+    
+    public void aggiungiElemento(Elemento elemento) {
+    	EntityTransaction t = em.getTransaction();
+    	t.begin();
+        em.persist(elemento);
+        t.commit();
+        System.out.println("Elemento salvato correttamente");
+    }
+
+    public Elemento trovaPerIsbn(UUID isbn) {
+        TypedQuery<Elemento> query = em.createQuery("SELECT e FROM Elemento e WHERE e.isbn = :isbn", Elemento.class);
+        query.setParameter("isbn", isbn);
+        return query.getSingleResult();
+    }
+    
+    public void rimuoviElemento(UUID isbn) {
+        Elemento elemento = trovaPerIsbn(isbn); //ho applicato il metodo sopra anzichè riscrivelo
+        if (elemento != null) {
+            em.remove(elemento);
+            System.out.println("Elemento rimosso correttamente");
+        } else {
+        	System.out.println("Elemento non trovato");
+        }
+    }
+
+    public Utente trovaPerNumeroTessera(UUID tessera) {
+        TypedQuery<Utente> query = em.createQuery("SELECT u FROM Utente u WHERE u.numeroTessera = :tessera", Utente.class);
+        query.setParameter("tessera", tessera);
+        return query.getSingleResult();
+    }
+
+
+}
+
+

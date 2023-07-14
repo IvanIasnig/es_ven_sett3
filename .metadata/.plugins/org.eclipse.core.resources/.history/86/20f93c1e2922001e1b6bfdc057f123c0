@@ -1,0 +1,17 @@
+package Application;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Elemento {
+    @Id
+    protected String isbn;
+
+    protected String titolo;
+    protected int annoPubblicazione;
+    protected int numeroPagine;
+
+}

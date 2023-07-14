@@ -1,0 +1,62 @@
+package Application;
+
+import java.time.LocalDate;
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+
+import DAO.ElementoDAO;
+import DAO.PrestitoDAO;
+import DAO.UtenteDAO;
+import Util.JpaUtil;
+
+
+public class Application {
+	
+	private static EntityManagerFactory emf = JpaUtil.getEntityManagerFactory();
+
+	 public static void main(String[] args) {
+	        
+		 
+		 
+		 	EntityManager em = emf.createEntityManager();
+		 
+
+	        UtenteDAO utenteDao = new UtenteDAO(em);
+	        PrestitoDAO prestitoDao = new PrestitoDAO(em);
+	        ElementoDAO elementoDao = new ElementoDAO(em);
+	        
+
+	        Libro libro = new Libro("Gita in barca", 1900, 218, "Claudio", "Romanzo");
+
+
+	        elementoDao.aggiungiElemento(libro);
+
+
+	        Utente utente = new Utente("Mario", "Rossi", LocalDate.of(1998, 9, 23));
+
+
+	        utenteDao.aggiungiUtente(utente);
+
+
+	        Prestito prestito = new Prestito(utente, libro, LocalDate.now(), LocalDate.now().plusDays(30), null);
+
+
+	        prestitoDao.aggiungiPrestito(prestito);
+
+
+	        Elemento elementoRicercato = elementoDao.trovaPerIsbn(libro.getIsbn());
+	        System.out.println("Libro trovato: " + elementoRicercato.getTitolo());
+
+	        List<Libro> libriRicercati = elementoDao.trovaPerAutore("F. Scott Fitzgerald");
+	        System.out.println("Libri trovati: " + libriRicercati.size());
+
+	        List<Prestito> prestitiUtente = prestitoDao.trovaPerUtente(utente);
+	        System.out.println("Prestiti in corso: " + prestitiUtente.size());
+
+	        List<Prestito> prestitiScaduti = prestitoDao.trovaScadutiNonRestituiti();
+	        System.out.println("Prestiti scaduti: " + prestitiScaduti.size());
+	    }
+
+}

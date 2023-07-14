@@ -1,0 +1,36 @@
+package Application;
+
+import java.time.LocalDate;
+import java.util.UUID;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Entity
+public class Prestito {
+    @Id
+    @GeneratedValue
+    private UUID id;
+
+    @ManyToOne
+    @JoinColumn(name = "utente_id", nullable = false)
+    private Utente utente;
+
+    @ManyToOne
+    @JoinColumn(name = "elemento_id", nullable = false)
+    private Elemento elemento;
+
+    @Column(name = "data_inizio_prestito")
+    private LocalDate dataInizioPrestito;
+
+    @Column(name = "data_restituzione_prevista")
+    private LocalDate dataRestituzionePrevista;
+
+    @Column(name = "data_restituzione_effettiva")
+    private LocalDate dataRestituzioneEffettiva;
+
+}

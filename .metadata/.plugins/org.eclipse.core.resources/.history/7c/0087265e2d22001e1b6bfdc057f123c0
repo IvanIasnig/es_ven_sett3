@@ -1,0 +1,13 @@
+package Application;
+
+@Entity
+public class Libro extends Elemento {
+
+    @Column(name = "autore")
+    private String autore;
+
+    @Column(name = "genere")
+    private String genere;
+
+    // getters and setters...
+}

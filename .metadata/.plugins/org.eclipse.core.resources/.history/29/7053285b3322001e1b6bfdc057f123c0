@@ -1,0 +1,30 @@
+package DAO;
+
+public class ElementoDAO {
+    
+    public void aggiungiElemento(Elemento elemento) {
+        // codice per aggiungere un elemento al database
+    }
+
+    public void rimuoviElemento(String isbn) {
+        // codice per rimuovere un elemento dal database
+    }
+
+    public Elemento trovaPerIsbn(String isbn) {
+        // codice per trovare un elemento per ISBN
+    }
+
+    public List<Elemento> trovaPerAnnoPubblicazione(int anno) {
+        // codice per trovare elementi per anno di pubblicazione
+    }
+
+    public List<Libro> trovaPerAutore(String autore) {
+        // codice per trovare libri per autore
+    }
+
+    public List<Elemento> trovaPerTitolo(String titolo) {
+        // codice per trovare elementi per titolo
+    }
+
+    // Metodi simili andranno in UtenteDAO e PrestitoDAO...
+}

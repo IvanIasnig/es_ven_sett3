@@ -1,0 +1,25 @@
+package DAO;
+
+public class PrestitoDAO {
+
+    public void aggiungiPrestito(Prestito prestito) {
+        // codice per aggiungere un prestito al database
+    }
+
+    public void rimuoviPrestito(Long id) {
+        // codice per rimuovere un prestito dal database
+    }
+
+    public Prestito trovaPerId(Long id) {
+        // codice per trovare un prestito per id
+    }
+
+    public List<Prestito> trovaPerUtente(Utente utente) {
+        // codice per trovare prestiti per un dato utente
+    }
+
+    public List<Prestito> trovaPrestitiScadutiENonRestituiti() {
+        // codice per trovare prestiti scaduti e non ancora restituiti
+    }
+}
+

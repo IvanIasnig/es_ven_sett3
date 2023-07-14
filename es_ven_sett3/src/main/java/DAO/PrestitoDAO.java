@@ -1,0 +1,59 @@
+package DAO;
+
+import java.util.List;
+import java.util.UUID;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
+
+import Application.Prestito;
+import Application.Utente;
+
+public class PrestitoDAO {
+	
+    private final EntityManager em;
+    
+    public PrestitoDAO(EntityManager em) {
+    	this.em = em;
+    }
+    
+    public void aggiungiPrestito(Prestito prestito) {
+    	EntityTransaction t = em.getTransaction();
+    	t.begin();
+        em.persist(prestito);
+        t.commit();
+        System.out.println("Prestito salvato correttamente");
+    }
+
+
+    
+    public void rimuoviPrestito(UUID id) {
+        Prestito prestito = em.find(Prestito.class, id);
+        if (prestito != null) {
+            EntityTransaction t = em.getTransaction();
+            t.begin();
+            em.remove(prestito);
+            t.commit();
+            System.out.println("Prestito rimosso correttamente");
+        } else {
+            System.out.println("Prestito non trovato");
+        }
+    }
+
+
+    public List<Prestito> trovaPerUtente(Utente utente) {
+        TypedQuery<Prestito> query = em.createQuery("SELECT p FROM Prestito p WHERE p.utente = :utente", Prestito.class);
+        query.setParameter("utente", utente);
+        return query.getResultList();
+    }
+
+    public List<Prestito> trovaScadutiNonRestituiti() {
+        TypedQuery<Prestito> query = em.createQuery(
+            "SELECT p FROM Prestito p WHERE p.dataRestituzioneEffettiva IS NULL AND p.dataRestituzionePrevista < CURRENT_DATE",
+            Prestito.class
+        );
+        return query.getResultList();
+    }
+}
+
