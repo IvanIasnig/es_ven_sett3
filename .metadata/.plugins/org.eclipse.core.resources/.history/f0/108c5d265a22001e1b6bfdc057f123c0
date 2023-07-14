@@ -65,7 +65,7 @@ public class Application {
 
 	        List<Elemento> elementiRicercati = elementoDao.trovaPerTitolo("Gita ");
 	        for (Elemento e : elementiRicercati) {
-	            System.out.println("Titolo trovato: " + e.getTitolo());
+	            System.out.println("Titolo: " + e.getTitolo());
 	        }
 
 	        Elemento elementoRicercato = elementoDao.trovaPerIsbn(libro2.getIsbn());

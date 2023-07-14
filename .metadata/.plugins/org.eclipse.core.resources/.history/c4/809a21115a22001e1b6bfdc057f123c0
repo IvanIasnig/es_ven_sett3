@@ -30,9 +30,9 @@ public class UtenteDAO {
     }
     
     public void rimuoviUtente(UUID isbn) {
-        Utente utente = trovaPerIsbn(isbn); //ho applicato il metodo sopra anzichè riscrivelo
-        if (utente != null) {
-            em.remove(utente);
+        Utente Utente = trovaPerIsbn(isbn); //ho applicato il metodo sopra anzichè riscrivelo
+        if (Utente != null) {
+            em.remove(Utente);
             System.out.println("Utente rimosso correttamente");
         } else {
         	System.out.println("Utente non trovato");
