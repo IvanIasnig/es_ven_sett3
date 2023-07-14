@@ -2,7 +2,6 @@ package Application;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.UUID;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -83,16 +82,6 @@ public class Application {
 
 	        List<Prestito> prestitiScaduti = prestitoDao.trovaScadutiNonRestituiti();
 	        System.out.println("Prestiti scaduti: " + prestitiScaduti.size() + " ,e sono: " + prestitiScaduti);
-	        
-	        List<Elemento> annoPubblicazione = elementoDao.trovaPerAnnoPubblicazione(1902);
-	        for (Elemento e : annoPubblicazione) {
-	            System.out.println("Libro trovato del 1902: " + e.getTitolo());
-	        }
-	        
-	        Utente trovaPerTessera = utenteDao.trovaPerNumeroTessera(UUID.fromString("fc8be317-38d0-4e59-9b1a-efa57fda1516"));
-	        System.out.println("Utente " + trovaPerTessera);
-	        
-	        
 	    }
 
 }

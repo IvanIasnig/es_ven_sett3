@@ -89,8 +89,9 @@ public class Application {
 	            System.out.println("Libro trovato del 1902: " + e.getTitolo());
 	        }
 	        
-	        Utente trovaPerTessera = utenteDao.trovaPerNumeroTessera(UUID.fromString("fc8be317-38d0-4e59-9b1a-efa57fda1516"));
-	        System.out.println("Utente " + trovaPerTessera);
+	        Utente trovaPerTessera = utenteDao.trovaPerNumeroTessera(UUID.fromString("12af066b-c6a1-4c45-8c13-eb3c7786be85"));
+
+	        System.out.println("Libro dell'utente " + utenteDao);
 	        
 	        
 	    }

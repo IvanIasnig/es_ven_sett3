@@ -40,7 +40,7 @@ public class UtenteDAO {
     }
 
     public Utente trovaPerNumeroTessera(UUID tessera) {
-        TypedQuery<Utente> query = em.createQuery("SELECT u FROM Utente u WHERE u.numeroDiTessera = :tessera", Utente.class);
+        TypedQuery<Utente> query = em.createQuery("SELECT u FROM Utente u WHERE u.numeroTessera = :tessera", Utente.class);
         query.setParameter("tessera", tessera);
         return query.getSingleResult();
     }
