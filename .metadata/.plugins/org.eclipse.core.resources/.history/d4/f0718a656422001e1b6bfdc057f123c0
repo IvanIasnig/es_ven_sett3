@@ -51,7 +51,7 @@ public class Application {
 
 
 	        // Prestito prestito = new Prestito(utente, libro, LocalDate.now(), LocalDate.now().plusDays(30), null);
-	        Prestito prestito2 = new Prestito(utente2, libro2, LocalDate.now().minusDays(100), LocalDate.now().minusDays(1) , null);
+	        Prestito prestito2 = new Prestito(utente2, libro2, LocalDate.now().minusDays(100), LocalDate.now() , null);
 	        Prestito prestito3 = new Prestito(utente3, libro3, LocalDate.now().minusDays(100), LocalDate.now().minusDays(10) , LocalDate.now().minusDays(5));
 	        Prestito prestito4 = new Prestito(utente3, rivista, LocalDate.now().minusDays(100), LocalDate.now().minusDays(10) , LocalDate.now().minusDays(5));
 	        
