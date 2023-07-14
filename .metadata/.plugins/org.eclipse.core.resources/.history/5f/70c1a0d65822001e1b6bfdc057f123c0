@@ -63,7 +63,9 @@ public class Application {
 	        elementoDao.aggiungiElemento(libro3);
 	        elementoDao.aggiungiElemento(rivista);
 
-	        List<Elemento> elementiRicercati = elementoDao.trovaPerTitolo("Gita ");
+	        // Ricerca di elementi per titolo
+	        List<Elemento> elementiRicercati = elementoDao.trovaPerTitolo("Gita in barca");
+	        System.out.println("Elementi trovati: " + elementiRicercati.size());
 	        for (Elemento e : elementiRicercati) {
 	            System.out.println("Titolo: " + e.getTitolo());
 	        }

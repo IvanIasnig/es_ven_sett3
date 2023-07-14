@@ -59,14 +59,6 @@ public class Application {
 	        prestitoDao.aggiungiPrestito(prestito3);
 	        prestitoDao.aggiungiPrestito(prestito4);
 
-	        elementoDao.aggiungiElemento(libro2);
-	        elementoDao.aggiungiElemento(libro3);
-	        elementoDao.aggiungiElemento(rivista);
-
-	        List<Elemento> elementiRicercati = elementoDao.trovaPerTitolo("Gita ");
-	        for (Elemento e : elementiRicercati) {
-	            System.out.println("Titolo: " + e.getTitolo());
-	        }
 
 	        Elemento elementoRicercato = elementoDao.trovaPerIsbn(libro2.getIsbn());
 	        System.out.println("Libro trovato: " + elementoRicercato.getTitolo());
